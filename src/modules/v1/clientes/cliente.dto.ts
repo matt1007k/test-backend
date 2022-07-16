@@ -1,3 +1,5 @@
+import { Request } from "express";
+
 export interface ClienteDTO {
   id: string;
   created: string;
@@ -8,3 +10,6 @@ export interface ClienteDTO {
   address: string;
   birthdate: string;
 }
+
+export type CreateClientBody = Omit<ClienteDTO, "id" | "created" | "updated">;
+export type UpdateClientBody = Omit<ClienteDTO, "created" | "updated">;

@@ -1,6 +1,8 @@
 import express from "express";
+import BodyParser from "body-parser";
 import Database from "./config/database";
 import routerV1 from "./modules/v1/routes";
+import { errors } from "celebrate";
 
 export default class Server {
   private app: express.Application;
@@ -10,6 +12,11 @@ export default class Server {
   constructor() {
     this.app = express();
     this.app.use(express.json());
+    this.app.use(BodyParser.json());
+
+    this.registerRoutes();
+
+    this.app.use(errors());
     this.db = new Database();
   }
 

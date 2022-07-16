@@ -1,9 +1,6 @@
 -- Active: 1647393675138@@127.0.0.1@5432@test_backend@public
 
-CREATE DATABASE test;
-
--- use database test_backend
-set search_path = "\c test";
+CREATE DATABASE test_backend;
 
 SET TIME ZONE 'America/Lima';
 
@@ -25,9 +22,9 @@ CREATE TABLE
     );
 
 
-
+-- Registrar un cliente
 CREATE
-OR REPLACE CEDURE proc_registrar_cliente(
+OR REPLACE PROCEDURE proc_registrar_cliente(
     f_id text,
     f_fname varchar(150),
     f_lname varchar(250),
@@ -58,6 +55,7 @@ OR REPLACE CEDURE proc_registrar_cliente(
 
 END $$ ;
 
+-- Obtener todos los clientes
 CREATE OR REPLACE FUNCTION func_obtener_clientes() 
 RETURNS SETOF clientes 
 LANGUAGE SQL AS 
@@ -65,4 +63,33 @@ $$
 SELECT * FROM clientes; 
 $$ ; 
 
---SELECT func_obtener_clientes();
+
+-- Obtener un cliente
+CREATE OR REPLACE FUNCTION func_obtener_un_cliente(f_id text) 
+RETURNS SETOF clientes 
+LANGUAGE SQL AS 
+$$ 
+SELECT * FROM clientes WHERE id=f_id; 
+$$ ; 
+
+-- Actualizar un cliente
+CREATE OR REPLACE PROCEDURE proc_actualizar_un_cliente(
+	f_id TEXT,
+    f_fname VARCHAR(150),
+    f_lname VARCHAR(250),
+    f_address VARCHAR(250),
+    f_status INT,
+    f_birthdate DATE
+)
+LANGUAGE plpgsql AS $$ 
+BEGIN 
+	UPDATE clientes 
+	SET fname=f_fname, 
+		lname=f_lname, 
+		address=f_address, 
+		status=f_status,
+		birthdate=f_birthdate,
+		updated=NOW()
+	WHERE id=f_id;
+END;
+$$;
