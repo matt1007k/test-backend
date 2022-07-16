@@ -1,11 +1,11 @@
 import { Pool } from "pg";
 
 export const client = new Pool({
-  host: "localhost",
-  port: 5432,
-  database: "test_backend",
-  user: "postgres",
-  password: "password",
+  host: process.env.DATABASE_HOST || "localhost",
+  port: Number(process.env.DATABASE_PORT) || 5432,
+  database: process.env.DATABASE_NAME || "test_backend",
+  user: process.env.DATABASE_USER || "postgres",
+  password: process.env.DATABASE_PASSWORD || "password",
 });
 
 export default class Database {
@@ -18,6 +18,8 @@ export default class Database {
   async connect() {
     try {
       this.db.connect();
+      console.log();
+
       console.log("Connection db successfully");
     } catch (error) {
       console.error("Connection error: " + error);
