@@ -1,7 +1,6 @@
 import { client } from "../../../config/database";
 import { CreateClientBody, UpdateClientBody } from "./cliente.dto";
 import { v4 as uuid } from "uuid";
-import { format } from "date-and-time";
 
 export default class ClientesService {
   async createClient({
