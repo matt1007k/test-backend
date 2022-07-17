@@ -47,12 +47,6 @@ export default class ClientesController {
       req.body as CreateClientBody;
     try {
       const clientesService = container.resolve(ClientesService);
-      // const client = await clientesService.getClientById(id);
-      // if (!client) {
-      //   return res
-      //     .status(httpStatus.NOT_FOUND)
-      //     .send({ message: "Client not found" });
-      // }
       const response = await clientesService.updateClient({
         id,
         fname,

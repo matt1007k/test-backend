@@ -1,5 +1,3 @@
-import { Request } from "express";
-
 export interface ClienteDTO {
   id: string;
   created: string;

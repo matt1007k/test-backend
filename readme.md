@@ -12,8 +12,8 @@ $ npm install & cd test-backend
 ### 2. Crear y configurar la base de datos
 - Crear la base de datos en Postgresql
 - Importar y ejecutar el archivo **base_datos.sql**
-- Crear el archivo **.env** y copiar todo el contenido del archivo **.env.example** o usar en el terminal el comando ```cp .env.example .env ```
-- Ingresar los datos de conexión de la base de datos de PostgreSQL
+- Crear el archivo **.env** y copiar todo el contenido del archivo **.env.example** o usar en la terminal el comando ```cp .env.example .env ```
+- El el archivo **.env** ingresar los datos de conexión de la base de datos de PostgreSQL
 
 ```env
 DATABASE_HOST=localhost
