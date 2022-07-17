@@ -1,6 +1,4 @@
--- Active: 1647393675138@@127.0.0.1@5432@test_backend@public
-
-CREATE DATABASE test_backend;
+--CREATE DATABASE test_backend;
 
 SET TIME ZONE 'America/Lima';
 

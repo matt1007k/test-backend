@@ -61,7 +61,7 @@ export default class ClientesController {
         status,
         birthdate,
       });
-      return res.status(httpStatus.OK).json(response);
+      return res.status(httpStatus.CREATED).json(response);
     } catch (error: any) {
       throw new Error(error);
     }

@@ -12,7 +12,7 @@ export default class ClientesService {
     birthdate,
   }: CreateClientBody) {
     try {
-      const response = await client.query(
+      await client.query(
         "CALL proc_registrar_cliente($1, $2, $3, $4, $5, $6)",
         [uuid().toString(), fname, lname, address, status, birthdate]
       );
